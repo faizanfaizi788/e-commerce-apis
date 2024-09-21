@@ -5,6 +5,7 @@ export const ERROR_MESSAGES = {
     INVALID_USER_DATA: 'Invalid user data',
     INVALID_EMAIL_OR_PASSWORD: 'Invalid email or password',
     VALIDATION_ERROR: 'Validation error',
-    SERVER_ERROR: 'Server error'
+    SERVER_ERROR: 'Server error',
+    PRODUCT_NOT_FOUND: 'Product not found',
   };
   
