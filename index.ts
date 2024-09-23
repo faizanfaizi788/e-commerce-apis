@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import connectDB from './config/db';
-import authRoutes from './routes/authRoutes';
-import productRoutes from './routes/productRoutes';
+import connectDB from './src/config/db';
+import authRoutes from './src/routes/authRoutes';
+import productRoutes from './src/routes/productRoutes';
 import cors from 'cors';
 import { v2 as cloudinary } from 'cloudinary';
 

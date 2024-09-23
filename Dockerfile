@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD [ "node", "src/app.ts" ]
+CMD [ "node", "index.ts" ]
