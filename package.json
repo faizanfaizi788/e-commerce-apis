@@ -7,10 +7,6 @@
     "start": "ts-node src/app.ts",
     "dev": "nodemon --exec ts-node src/app.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
@@ -27,16 +23,12 @@
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.5.0",
     "cors": "^2.8.5",
-    "dns": "^0.2.2",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-async-handler": "^1.2.0",
-    "fs": "^0.0.1-security",
-    "install": "^0.13.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.3",
     "multer": "^1.4.5-lts.1",
-    "npm": "^10.8.3",
-    "path": "^0.12.7"
+    "npm": "^10.8.3"
   }
 }
