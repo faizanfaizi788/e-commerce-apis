@@ -12,3 +12,5 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+const mongoUri = process.env.MONGODB_URI;
+
