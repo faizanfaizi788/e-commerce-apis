@@ -1,26 +1,32 @@
-import jwt from 'jsonwebtoken';  
-import asyncHandler from 'express-async-handler';  
-import User from '../models/userModel.js'; // Adjust the path accordingly  
+import jwt from 'jsonwebtoken';
+import User from '../models/userModel.js'; // Ensure correct path to the User model
 
-export const protect = asyncHandler(async (req, res, next) => {  
-  let token;  
+export const protect = async (req, res, next) => {
+  let token;
+
+  // Check if the Authorization header contains the Bearer token
+  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
+    try {
+      // Extract the token
+      token = req.headers.authorization.split(' ')[1];
   
-  if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {  
-    try {  
-      token = req.headers.authorization.split(' ')[1];  
-      const decoded = jwt.verify(token, process.env.JWT_SECRET); // Assuming JWT_SECRET is defined in your environment variables  
-      
-      // Fetch the user without the password  
-      req.user = await User.findById(decoded.id).select('-password');  
-      next();  
-    } catch (error) {  
-      res.status(401);  
-      throw new Error('Not authorized, token failed');  
-    }  
-  }  
+      // Decode the token and get the user's ID
+      const decoded = jwt.verify(token, process.env.JWT_SECRET); // Ensure `JWT_SECRET` is defined in your .env file
 
-  if (!token) {  
-    res.status(401);  
-    throw new Error('Not authorized, no token');  
-  }  
-});
+      // Fetch the user from the database without the password field
+      req.user = await User.findById(decoded.id).select('-password');
+
+      if (!req.user) {
+        return res.status(401).json({ message: 'Not authorized, user not found' });
+      }
+
+      // Proceed to the next middleware/controller
+      next();
+    } catch (error) {
+      console.error('Token verification failed:', error);
+      return res.status(401).json({ message: 'Not authorized, token failed' });
+    }
+  } else {
+    return res.status(401).json({ message: 'Not authorized, no token provided' });
+  }
+};

@@ -7,5 +7,6 @@ export const ERROR_MESSAGES = {
     VALIDATION_ERROR: 'Validation error',
     SERVER_ERROR: 'Server error',
     PRODUCT_NOT_FOUND: 'Product not found',
+    INVALID_LOCATION: 'Location must be an array with [longitude, latitude]',
   };
   
